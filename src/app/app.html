@@ -1,1 +1,11 @@
+<app-header>
+  <img src="images/logo.png" alt="Logo Rick and Morty" logo width="114" height="64">
+
+  <app-navigation-tabs [tabs]="[
+    { label: 'Início', route: './characters',  icon: 'home' },
+    { label: 'Favoritos', route: './favorites', icon: 'favorite', count: 3 }
+  ]">
+  </app-navigation-tabs>
+</app-header>
+
 <router-outlet></router-outlet>
