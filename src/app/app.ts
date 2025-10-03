@@ -1,10 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Header } from './shared/components/header/header';
+import { NavigationTabs } from './shared/components/navigation-tabs/navigation-tabs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TranslatePipe],
+  imports: [
+    RouterOutlet,
+    Header,
+    NavigationTabs
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
