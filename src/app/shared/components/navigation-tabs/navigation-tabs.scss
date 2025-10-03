@@ -1,0 +1,31 @@
+@use 'colors';
+
+.navigation-tabs {
+  border: 1px solid colors.$color-core-border;
+  border-radius: 12px;
+  display: flex;
+  gap: 1px;
+  background-color: colors.$color-core-border;
+  overflow: hidden;
+
+  &__item {
+    font-size: 14px;
+    font-weight: 600;
+    color: colors.$color-neutral-content;
+    display: inline-block;
+    padding: 8px 16px 8px 12px;
+    background-color: colors.$color-core-foreground;
+    align-content: center;
+
+    &.is-active {
+      color: colors.$color-neutral-content-onSource;
+      background-color: colors.$color-neutral-surface;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}

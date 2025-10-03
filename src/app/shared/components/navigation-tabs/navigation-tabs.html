@@ -1,0 +1,17 @@
+<nav class="navigation-tabs">
+  @for(tab of tabs; track $index) {
+  <a class="navigation-tabs__item" [routerLink]="tab.route" routerLinkActive="is-active">
+    <span class="navigation-tabs__inner">
+      @if(tab.icon) {
+      <mat-icon aria-hidden="false" [aria-label]="tab.icon" [fontIcon]="tab.icon"></mat-icon>
+      }
+
+      <span class="navigation-tabs__label">{{ tab.label }}</span>
+      @if(tab.count !== undefined) {
+      <app-counter [count]="tab.count"></app-counter>
+      }
+
+    </span>
+  </a>
+  }
+</nav>
