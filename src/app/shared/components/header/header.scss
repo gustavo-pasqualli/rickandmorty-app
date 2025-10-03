@@ -1,0 +1,15 @@
+@use 'colors';
+
+:host {
+  display: block;
+  background-color: colors.$color-core-foreground;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
