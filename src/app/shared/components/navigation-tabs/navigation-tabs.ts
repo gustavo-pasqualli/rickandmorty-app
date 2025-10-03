@@ -2,14 +2,7 @@ import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Counter } from '../counter/counter';
-
-export type NavTab = {
-  label: string;
-  route: string | any[];
-  icon?: string;
-  count?: number;
-  disabled?: boolean;
-};
+import { NavTab } from '../../models/navtab.interface';
 
 @Component({
   selector: 'app-navigation-tabs',
