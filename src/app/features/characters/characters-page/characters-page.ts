@@ -1,12 +1,16 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { catchError, combineLatest, combineLatestWith, debounceTime, distinctUntilChanged, filter, take, forkJoin, map, of, shareReplay, startWith, switchMap, Subject, scan, exhaustMap, tap } from 'rxjs';
+
+import { CharacterService } from '../../../core/services/character.service';
+import { CharacterCard } from '../../../shared/components/character-card/character-card';
 import { PageTitle } from '../../../shared/components/page-title/page-title';
 import { SearchInput } from '../../../shared/components/search-input/search-input';
-import { CharacterService } from '../../../core/services/character.service';
-import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Observable, debounceTime, distinctUntilChanged, filter, switchMap, map, catchError, of, startWith } from 'rxjs';
+import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
 import { Character } from '../../../shared/models/characters.interface';
-import { AsyncPipe } from '@angular/common';
-import { CharacterCard } from '../../../shared/components/character-card/character-card';
+import { InfiniteScrollDirective } from '../../../shared/directives/infinite-scroll.directive';
+import { PaginatedApiResponse } from '../../../shared/models/paginated.interface';
 
 @Component({
   selector: 'app-characters-page',
@@ -15,7 +19,8 @@ import { CharacterCard } from '../../../shared/components/character-card/charact
     SearchInput,
     ReactiveFormsModule,
     AsyncPipe,
-    CharacterCard
+    CharacterCard,
+    InfiniteScrollDirective
   ],
   templateUrl: './characters-page.html',
   styleUrl: './characters-page.scss'
@@ -24,28 +29,73 @@ export class CharactersPage {
   private characterService = inject(CharacterService);
   private formBuilderService = inject(FormBuilder);
 
+  private favoritesQuery = inject(FavoriteCharactersQuery);
+  private favoritesService = inject(FavoriteCharactersService);
+
   form = this.formBuilderService.nonNullable.group({
     name: ['']
   })
 
+  page = 1;
+  private loadMore$ = new Subject<void>();
+  private hasNext = true;
+
   characters$ = this.form.controls.name.valueChanges.pipe(
     startWith(this.form.controls.name.value),
     debounceTime(500),
+    map(v => (v ?? '').trim()),
     distinctUntilChanged(),
     filter(name => name.length === 0 || name.length > 1),
-    switchMap((name) => this.searchCharacters(name)),
-  )
 
-  searchCharacters(name: string) {
+    switchMap(() => {
+      this.page = 1;
+      this.hasNext = true;
+
+      return this.loadMore$.pipe(
+        startWith(void 0),
+
+        exhaustMap(() =>
+          this.searchCharacters().pipe(
+            tap((res: PaginatedApiResponse<Character>) => {
+              if(!res.info.next) {
+                this.hasNext = false;
+              }
+              if (this.hasNext) this.page++;
+            }),
+            map((res: PaginatedApiResponse<Character>) => res.results),
+            catchError(() => of([] as Character[]))
+          )
+        ),
+
+        scan((all, chunk) => all.concat(chunk), [] as Character[])
+      );
+    }),
+
+    combineLatestWith(this.favoritesQuery.select(s => s.ids as number[])),
+    map(([chars, favIds]) => {
+      const fav = new Set<number>(favIds);
+      return chars.map(c => ({ ...c, isFavorite: fav.has(c.id) }));
+    }),
+    shareReplay(1)
+  );
+
+  searchCharacters() {
     const formValue = this.form.value;
 
     const payload = {
-      ...formValue
+      ...formValue,
+      page: this.page
     };
 
-    return this.characterService.getCharacters(payload).pipe(
-      map(res => res.results),
-      catchError(() => of([]))
-    );
+    return this.characterService.getCharacters(payload);
+  }
+
+  loadNext() {
+    if (!this.hasNext) return;
+    this.loadMore$.next();
+  }
+
+  toggleFavorite(c: Character) {
+    this.favoritesService.toggle(c);
   }
 }

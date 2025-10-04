@@ -7,7 +7,13 @@
 </section>
 
 <section class="section-list">
-  @for(item of characters$ | async; track $index){
-  <app-character-card [image]="item.image" [name]="item.name" [species]="item.species"></app-character-card>
+  @for (item of characters$ | async; track item.id; let last = $last) {
+  <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="item.isFavorite"
+    (favoriteToggle)="toggleFavorite(item)">
+  </app-character-card>
+
+  @if (last) {
+  <div appInfiniteScroll (visible)="loadNext()"></div>
+  }
   }
 </section>
