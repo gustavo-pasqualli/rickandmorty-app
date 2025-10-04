@@ -1,3 +1,10 @@
 {
-
+  "FAVORITES": "Favorites",
+  "SEARCH": "Search",
+  "HOME": "Home",
+  "NOTHING_FOUND": "Nothing was found",
+  "TRY_NEW_SEARCH": "Try a new search.",
+  "NO_FAVORITES_YET": "It looks like you don’t have any favorites yet",
+  "GO_HOME_MESSAGE": "Go back to the home page and pick your favorites.",
+  "BACK_TO_HOME": "Back to home"
 }

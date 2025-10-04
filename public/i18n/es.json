@@ -1,3 +1,10 @@
 {
-
+  "FAVORITES": "Favoritos",
+  "SEARCH": "Buscar",
+  "HOME": "Inicio",
+  "NOTHING_FOUND": "No se ha encontrado nada",
+  "TRY_NEW_SEARCH": "Intenta realizar una nueva búsqueda.",
+  "NO_FAVORITES_YET": "Parece que aún no tienes favoritos",
+  "GO_HOME_MESSAGE": "Vuelve a la página de inicio y elige tus favoritos.",
+  "BACK_TO_HOME": "Volver al inicio"
 }
