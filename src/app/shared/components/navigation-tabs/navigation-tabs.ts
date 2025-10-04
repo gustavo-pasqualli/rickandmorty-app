@@ -3,13 +3,15 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Counter } from '../counter/counter';
 import { NavTab } from '../../models/navtab.interface';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navigation-tabs',
   imports: [
     RouterModule,
     MatIconModule,
-    Counter
+    Counter,
+    TranslatePipe
   ],
   templateUrl: './navigation-tabs.html',
   styleUrl: './navigation-tabs.scss'

@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-page-title',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './page-title.html',
   styleUrl: './page-title.scss'
 })
