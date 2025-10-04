@@ -1,0 +1,49 @@
+@use 'colors';
+
+.character-card {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid colors.$color-core-border;
+  overflow: hidden;
+
+  &__favorite-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: transparent;
+    -webkit-text-stroke: 1px colors.$color-core-content;
+
+    &.active {
+      color: colors.$color-neutral-content-onSource;
+      background-color: colors.$color-neutral-surface;
+      -webkit-text-stroke: 1px colors.$color-neutral-content-onSource;
+      border-radius: 0 0 0 100px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    padding: 12px;
+  }
+
+  &__name {
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-size: 24px;
+    color: colors.$color-core-content;
+  }
+
+  &__specie {
+    font-weight: 400;
+    font-size: 16px;
+    color: colors.$color-core-content-low;
+  }
+}

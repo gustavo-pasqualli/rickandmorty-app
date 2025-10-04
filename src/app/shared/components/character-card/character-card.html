@@ -1,0 +1,10 @@
+<div class="character-card">
+  <img [src]="image" alt="" width="244" height="244">
+  <div class="character-card__favorite-btn ">
+    <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite"></mat-icon>
+  </div>
+  <div class="character-card__info">
+    <p class="character-card__name">{{ name | truncate:15 }}</p>
+    <p class="character-card__specie">{{ species }}</p>
+  </div>
+</div>
