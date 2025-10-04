@@ -1,5 +1,18 @@
-main {
-  width: 720px;
-  margin: 0 auto;
-  padding-top: 48px;
+:host {
+  height: 100dvh;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.container {
+  overflow: auto;
+  scrollbar-gutter: stable;
+  margin-top: 64px;
+
+  &__content {
+    width: 720px;
+    margin: 0 auto;
+    padding-top: 48px;
+  }
 }
