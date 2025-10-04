@@ -14,7 +14,6 @@ export class CharacterService {
   http = inject(HttpClient);
 
   getCharacters(params: any): Observable<PaginatedApiResponse<Character>> {
-    console.log(params)
     return this.http.get<PaginatedApiResponse<Character>>(this.url + `character`, {
       params
     });
