@@ -2,10 +2,12 @@ import { Component, inject } from '@angular/core';
 import { PageTitle } from '../../../shared/components/page-title/page-title';
 import { SearchInput } from '../../../shared/components/search-input/search-input';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, Observable, switchMap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, switchMap } from 'rxjs';
 import { Character } from '../../../shared/models/characters.interface';
 import { CharacterService } from '../../../core/services/character.service';
 import { AsyncPipe } from '@angular/common';
+import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
+import { CharacterCard } from '../../../shared/components/character-card/character-card';
 
 @Component({
   selector: 'app-favorite-characters-page',
@@ -13,34 +15,36 @@ import { AsyncPipe } from '@angular/common';
     PageTitle,
     SearchInput,
     ReactiveFormsModule,
-    AsyncPipe
+    AsyncPipe,
+    CharacterCard
   ],
   templateUrl: './favorite-characters-page.html',
   styleUrl: './favorite-characters-page.scss'
 })
 export class FavoriteCharactersPage {
-  private characterService = inject(CharacterService);
   private formBuilderService = inject(FormBuilder);
+
+  private favoritesQuery = inject(FavoriteCharactersQuery);
+  private favoritesService = inject(FavoriteCharactersService);
 
   form = this.formBuilderService.nonNullable.group({
     name: ['']
   })
 
-  characters$!: Observable<Character[]>;
+  favorites$ = this.favoritesQuery.all$;
 
-  ngOnInit(): void {
-    this.searchCharacters();
-  }
+  filter$ = this.form.controls.name.valueChanges.pipe(
+    startWith(this.form.controls.name.value),
+    debounceTime(300),
+    distinctUntilChanged(),
+    map(v => v.trim().toLowerCase())
+  );
 
-  searchCharacters() {
-    const formValue = this.form.value;
+  characters$ = combineLatest([this.favorites$, this.filter$]).pipe(
+    map(([list, q]) => q ? list.filter(c => c.name.toLowerCase().includes(q)) : list)
+  );
 
-    this.characters$ = this.form.controls.name.valueChanges.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      filter((text) => text.length > 1),
-      switchMap(() => this.characterService.getCharacters(formValue)),
-      map(res => res.results),
-    )
+  toggleFavorite(c: Character) {
+    this.favoritesService.toggle(c);
   }
 }

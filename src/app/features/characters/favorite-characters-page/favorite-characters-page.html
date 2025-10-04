@@ -7,7 +7,15 @@
 </section>
 
 <section class="section-list">
-  @for(item of characters$ | async; track $index){
-  teste
+  @let items = (characters$ | async) ?? [];
+
+  @if (items.length > 0) {
+  @for (item of items; track $index) {
+  <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="true"
+    (favoriteToggle)="toggleFavorite(item)">
+  </app-character-card>
+  }
+  } @else {
+  <p>Nenhum favorito ainda.</p>
   }
 </section>
