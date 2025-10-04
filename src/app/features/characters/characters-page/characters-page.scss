@@ -1,0 +1,11 @@
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.section-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
