@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,4 +15,10 @@ export class CharacterCard {
   @Input() image = '';
   @Input() name = '';
   @Input() species = '';
+  @Input() isFavorite = false;
+  @Output() favoriteToggle = new EventEmitter<void>();
+
+  favorite() {
+    this.favoriteToggle.emit();
+  }
 }

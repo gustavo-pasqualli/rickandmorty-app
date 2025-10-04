@@ -1,6 +1,6 @@
 <div class="character-card">
   <img [src]="image" alt="" width="244" height="244">
-  <div class="character-card__favorite-btn ">
+  <div class="character-card__favorite-btn" [class.active]="isFavorite" (click)="favorite()">
     <mat-icon aria-hidden="false" aria-label="favorite icon" fontIcon="favorite"></mat-icon>
   </div>
   <div class="character-card__info">
