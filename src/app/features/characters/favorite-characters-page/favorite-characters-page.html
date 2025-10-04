@@ -1,1 +1,13 @@
-<p>favorite-characters-page works!</p>
+<section class="section-header">
+  <app-page-title label="FAVORITES"></app-page-title>
+  <form [formGroup]="form">
+    <app-search-input label="SEARCH" placeholder="Ex. Rick" [control]="form.controls.name">
+    </app-search-input>
+  </form>
+</section>
+
+<section class="section-list">
+  @for(item of characters$ | async; track $index){
+  teste
+  }
+</section>
