@@ -1,0 +1,26 @@
+@use 'colors';
+
+.list-message {
+  width: 100%;
+  height: 511px;
+  border: 1px solid colors.$color-core-border;
+  border-radius: 12px;
+  background-color: colors.$color-core-foreground;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 16px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    color: colors.$color-core-content;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 18px;
+    color: colors.$color-core-content-low;
+  }
+}
