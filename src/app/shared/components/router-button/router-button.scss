@@ -1,0 +1,15 @@
+@use 'colors';
+
+.router-button {
+  display: flex;
+  background-color: colors.$color-neutral-surface;
+  border-radius: 12px;
+
+  &__label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    color: colors.$color-neutral-content-onSource;
+    padding: 13px 16px;
+  }
+}
