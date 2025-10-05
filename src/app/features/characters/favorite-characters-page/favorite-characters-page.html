@@ -6,16 +6,20 @@
   </form>
 </section>
 
+@if (characters$ | async; as items) {
+@if (items.length > 0) {
 <section class="section-list">
-  @let items = (characters$ | async) ?? [];
-
-  @if (items.length > 0) {
-  @for (item of items; track $index) {
+  @for (item of items; track item.id) {
   <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="true"
     (favoriteToggle)="toggleFavorite(item)">
   </app-character-card>
   }
-  } @else {
-  <p>Nenhum favorito ainda.</p>
-  }
 </section>
+} @else {
+<app-list-message title="NO_FAVORITES_YET" description="GO_HOME_MESSAGE">
+  <app-router-button label="BACK_TO_HOME" routerLink="/characters"></app-router-button>
+</app-list-message>
+}
+} @else {
+<app-list-skeleton></app-list-skeleton>
+}

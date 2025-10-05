@@ -6,14 +6,27 @@
   </form>
 </section>
 
-<section class="section-list">
-  @for (item of characters$ | async; track item.id; let last = $last) {
-  <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="item.isFavorite"
-    (favoriteToggle)="toggleFavorite(item)">
-  </app-character-card>
 
-  @if (last) {
-  <div appInfiniteScroll (visible)="loadNext()"></div>
+@if (characters$ | async; as items) {
+<ng-container>
+  @if (items.length > 0) {
+  <section class="section-list" #scrollHost>
+    @for (item of items; track item.id) {
+    <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="item.isFavorite"
+      (favoriteToggle)="toggleFavorite(item)">
+    </app-character-card>
+    }
+
+    @if (hasNext) {
+    <div appInfiniteScroll (visible)="loadNext()">
+    </div>
+    }
+  </section>
+  } @else {
+  <app-list-message title="NOTHING_FOUND" description="TRY_NEW_SEARCH">
+  </app-list-message>
   }
-  }
-</section>
+</ng-container>
+} @else {
+<app-list-skeleton></app-list-skeleton>
+}

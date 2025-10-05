@@ -11,6 +11,8 @@ import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../sta
 import { Character } from '../../../shared/models/characters.interface';
 import { InfiniteScrollDirective } from '../../../shared/directives/infinite-scroll.directive';
 import { PaginatedApiResponse } from '../../../shared/models/paginated.interface';
+import { ListSkeleton } from '../../../shared/components/list-skeleton/list-skeleton';
+import { ListMessage } from '../../../shared/components/list-message/list-message';
 
 @Component({
   selector: 'app-characters-page',
@@ -20,7 +22,9 @@ import { PaginatedApiResponse } from '../../../shared/models/paginated.interface
     ReactiveFormsModule,
     AsyncPipe,
     CharacterCard,
-    InfiniteScrollDirective
+    InfiniteScrollDirective,
+    ListSkeleton,
+    ListMessage
   ],
   templateUrl: './characters-page.html',
   styleUrl: './characters-page.scss'
@@ -37,8 +41,9 @@ export class CharactersPage {
   })
 
   page = 1;
+  hasNext = true;
   private loadMore$ = new Subject<void>();
-  private hasNext = true;
+
 
   characters$ = this.form.controls.name.valueChanges.pipe(
     startWith(this.form.controls.name.value),

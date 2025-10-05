@@ -8,6 +8,10 @@ import { CharacterService } from '../../../core/services/character.service';
 import { AsyncPipe } from '@angular/common';
 import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
 import { CharacterCard } from '../../../shared/components/character-card/character-card';
+import { ListSkeleton } from "../../../shared/components/list-skeleton/list-skeleton";
+import { ListMessage } from '../../../shared/components/list-message/list-message';
+import { RouterButton } from '../../../shared/components/router-button/router-button';
+
 
 @Component({
   selector: 'app-favorite-characters-page',
@@ -16,7 +20,10 @@ import { CharacterCard } from '../../../shared/components/character-card/charact
     SearchInput,
     ReactiveFormsModule,
     AsyncPipe,
-    CharacterCard
+    CharacterCard,
+    ListSkeleton,
+    ListMessage,
+    RouterButton
   ],
   templateUrl: './favorite-characters-page.html',
   styleUrl: './favorite-characters-page.scss'
