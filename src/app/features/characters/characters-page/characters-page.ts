@@ -1,18 +1,33 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { catchError, combineLatest, combineLatestWith, debounceTime, distinctUntilChanged, filter, take, forkJoin, map, of, shareReplay, startWith, switchMap, Subject, scan, exhaustMap, tap } from 'rxjs';
+import {
+  catchError,
+  combineLatestWith,
+  debounceTime,
+  distinctUntilChanged,
+  exhaustMap,
+  filter,
+  map,
+  of,
+  scan,
+  shareReplay,
+  startWith,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 import { CharacterService } from '../../../core/services/character.service';
 import { CharacterCard } from '../../../shared/components/character-card/character-card';
+import { ListMessage } from '../../../shared/components/list-message/list-message';
+import { ListSkeleton } from '../../../shared/components/list-skeleton/list-skeleton';
 import { PageTitle } from '../../../shared/components/page-title/page-title';
 import { SearchInput } from '../../../shared/components/search-input/search-input';
-import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
-import { Character } from '../../../shared/models/characters.interface';
 import { InfiniteScrollDirective } from '../../../shared/directives/infinite-scroll.directive';
+import { Character } from '../../../shared/models/characters.interface';
 import { PaginatedApiResponse } from '../../../shared/models/paginated.interface';
-import { ListSkeleton } from '../../../shared/components/list-skeleton/list-skeleton';
-import { ListMessage } from '../../../shared/components/list-message/list-message';
+import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
 
 @Component({
   selector: 'app-characters-page',
