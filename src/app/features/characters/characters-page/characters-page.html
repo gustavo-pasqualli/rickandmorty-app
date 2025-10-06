@@ -8,25 +8,23 @@
 
 
 @if (characters$ | async; as items) {
-<ng-container>
-  @if (items.length > 0) {
-  <section class="section-list" #scrollHost>
-    @for (item of items; track item.id) {
-    <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="item.isFavorite"
-      (favoriteToggle)="toggleFavorite(item)">
-    </app-character-card>
-    }
-
-    @if (hasNext) {
-    <div appInfiniteScroll (visible)="loadNext()">
-    </div>
-    }
-  </section>
-  } @else {
-  <app-list-message title="NOTHING_FOUND" description="TRY_NEW_SEARCH">
-  </app-list-message>
+@if (items.length > 0) {
+<section class="section-list" #scrollHost>
+  @for (item of items; track item.id) {
+  <app-character-card [image]="item.image" [name]="item.name" [species]="item.species" [isFavorite]="item.isFavorite"
+    (favoriteToggle)="toggleFavorite(item)">
+  </app-character-card>
   }
-</ng-container>
+
+  @if (hasNext) {
+  <div appInfiniteScroll (visible)="loadNext()">
+  </div>
+  }
+</section>
+} @else {
+<app-list-message title="NOTHING_FOUND" description="TRY_NEW_SEARCH">
+</app-list-message>
+}
 } @else {
 <app-list-skeleton></app-list-skeleton>
 }

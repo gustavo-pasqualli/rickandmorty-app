@@ -1,6 +1,15 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CharacterCard } from '@Components/character-card/character-card';
+import { ListMessage } from '@Components/list-message/list-message';
+import { ListSkeleton } from '@Components/list-skeleton/list-skeleton';
+import { PageTitle } from '@Components/page-title/page-title';
+import { SearchInput } from '@Components/search-input/search-input';
+import { InfiniteScrollDirective } from '@Directives/infinite-scroll.directive';
+import { Character } from '@Models/characters.interface';
+import { PaginatedApiResponse } from '@Models/paginated.interface';
+import { FavoriteCharactersQuery, FavoriteCharactersService } from '@State/favorite-characters';
 import {
   catchError,
   combineLatestWith,
@@ -19,15 +28,6 @@ import {
 } from 'rxjs';
 
 import { CharacterService } from '../../../core/services/character.service';
-import { CharacterCard } from '../../../shared/components/character-card/character-card';
-import { ListMessage } from '../../../shared/components/list-message/list-message';
-import { ListSkeleton } from '../../../shared/components/list-skeleton/list-skeleton';
-import { PageTitle } from '../../../shared/components/page-title/page-title';
-import { SearchInput } from '../../../shared/components/search-input/search-input';
-import { InfiniteScrollDirective } from '../../../shared/directives/infinite-scroll.directive';
-import { Character } from '../../../shared/models/characters.interface';
-import { PaginatedApiResponse } from '../../../shared/models/paginated.interface';
-import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
 
 @Component({
   selector: 'app-characters-page',

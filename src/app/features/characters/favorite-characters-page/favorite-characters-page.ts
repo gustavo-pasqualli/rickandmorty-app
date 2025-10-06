@@ -1,16 +1,15 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CharacterCard } from '@Components/character-card/character-card';
+import { ListMessage } from '@Components/list-message/list-message';
+import { ListSkeleton } from '@Components/list-skeleton/list-skeleton';
+import { PageTitle } from '@Components/page-title/page-title';
+import { RouterButton } from '@Components/router-button/router-button';
+import { SearchInput } from '@Components/search-input/search-input';
+import { Character } from '@Models/characters.interface';
+import { FavoriteCharactersQuery, FavoriteCharactersService } from '@State/favorite-characters';
 import { combineLatest, debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
-
-import { CharacterCard } from '../../../shared/components/character-card/character-card';
-import { ListMessage } from '../../../shared/components/list-message/list-message';
-import { ListSkeleton } from '../../../shared/components/list-skeleton/list-skeleton';
-import { PageTitle } from '../../../shared/components/page-title/page-title';
-import { RouterButton } from '../../../shared/components/router-button/router-button';
-import { SearchInput } from '../../../shared/components/search-input/search-input';
-import { Character } from '../../../shared/models/characters.interface';
-import { FavoriteCharactersQuery, FavoriteCharactersService } from '../../../state/favorite-characters';
 
 
 @Component({
