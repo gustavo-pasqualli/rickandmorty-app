@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { BackToTop } from '@Components/back-to-top/back-to-top';
 import { Header } from '@Components/header/header';
 import { NavigationTabs } from '@Components/navigation-tabs/navigation-tabs';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +13,8 @@ import { FavoriteCharactersQuery } from '@State/favorite-characters';
     RouterOutlet,
     Header,
     NavigationTabs,
-    RouterLink
+    RouterLink,
+    BackToTop
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
