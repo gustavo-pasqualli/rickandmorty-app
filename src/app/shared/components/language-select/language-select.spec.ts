@@ -1,4 +1,6 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { LanguageSelect } from './language-select';
 
@@ -8,7 +10,13 @@ describe('LanguageSelect', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LanguageSelect]
+      imports: [
+        LanguageSelect,
+        TranslateModule.forRoot()
+      ],
+      providers: [
+        provideZonelessChangeDetection()
+      ]
     })
     .compileComponents();
 

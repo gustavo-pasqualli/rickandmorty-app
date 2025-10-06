@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Counter } from './counter';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Counter', () => {
   let component: Counter;
@@ -8,7 +9,8 @@ describe('Counter', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Counter]
+      imports: [Counter],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 

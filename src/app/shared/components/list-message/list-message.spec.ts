@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListMessage } from './list-message';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 describe('ListMessage', () => {
   let component: ListMessage;
@@ -8,7 +9,13 @@ describe('ListMessage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListMessage]
+      imports: [
+        ListMessage,
+        TranslateModule.forRoot()
+      ],
+      providers: [
+        provideZonelessChangeDetection()
+      ]
     })
     .compileComponents();
 

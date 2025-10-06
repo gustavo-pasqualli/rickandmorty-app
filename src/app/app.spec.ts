@@ -1,11 +1,17 @@
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { provideZonelessChangeDetection } from '@angular/core';
+import {
+  MissingTranslationHandler,
+  TranslateCompiler,
+  TranslateLoader,
+  TranslateParser,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
+
 import { App } from './app';
 
-// dummies pra rotas usadas no template
-import { Component } from '@angular/core';
-import { MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateParser, TranslateService, TranslateStore } from '@ngx-translate/core';
 @Component({standalone: true, template: ''}) class DummyCharacters {}
 @Component({standalone: true, template: ''}) class DummyFavorites {}
 
@@ -20,7 +26,7 @@ describe('App', () => {
           { path: 'favorites', component: DummyFavorites },
           { path: '', redirectTo: 'characters', pathMatch: 'full' },
         ]),
-         { provide: TranslateLoader },
+        { provide: TranslateLoader },
         TranslateService,
         TranslateCompiler,
         TranslateParser,

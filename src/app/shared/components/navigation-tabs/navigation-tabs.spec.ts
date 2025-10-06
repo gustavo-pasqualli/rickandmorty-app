@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationTabs } from './navigation-tabs';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('NavigationTabs', () => {
   let component: NavigationTabs;
@@ -8,7 +9,8 @@ describe('NavigationTabs', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavigationTabs]
+      imports: [NavigationTabs],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
