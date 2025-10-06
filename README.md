@@ -1,42 +1,34 @@
 # Rick And Morty - Api
 
 Aplicação Angular para busca de personagens de Rick And Morty, exibindo informações e posibilitando favoritar personagens.  
-Construída com **Angular 20**.
+Construída com **Angular 20**
+.
+## 🌐 URL do site (produção)
+
+- **Site:** https://d1pjap3bo15q84.cloudfront.net  
 
 ## 🚀 Requisitos
 
 Antes de começar, verifique se você possui instalado:
 
 - **Node.js**: `>=20.x`  
-- **NPM**: `>=10.x` (ou use Yarn, se preferir, mas o projeto está configurado para NPM)  
+- **NPM**: `>=10.x`
 - **Angular CLI**: `^20.1.5`  
 
 ## 📦 Instalação do projeto
 
-Clone o repositório:
-
 ```bash
 git clone https://github.com/gustavo-pasqualli/rickandmorty-app.git
 cd rickandmorty-app
-```
-
-Instale as dependências com NPM:
-
-```bash
 npm install
 ```
 
-## 🖥️ Rodando em ambiente de desenvolvimento
-
-Execute o comando:
+## 🖥️ Execução (dev)
 
 ```bash
 ng serve
 ```
-
-A aplicação ficará disponível em:  
-👉 [http://localhost:4200](http://localhost:4200)
-
+A aplicação ficará disponível em: http://localhost:4200
 
 ## 📜 Scripts disponíveis
 
@@ -49,3 +41,21 @@ A aplicação ficará disponível em:
 
 - [Angular 20](https://angular.dev/)  
 - [RxJS](https://rxjs.dev/)  
+- [Angular Material](https://material.angular.dev)
+- [Akita](https://opensource.salesforce.com/akita)
+- [ngx-translate](https://github.com/ngx-translate/core)
+
+## 🧩 Desafios encontrados
+
+- **Primeira vez usando Akita:** Escolhi utilizar o Akita por ser uma biblioteca na qual eu nunca havia trabalhado, foi uma experiência bacana.  
+
+## 🐳 Docker
+
+Você pode executar a aplicação através do Docker utilizando os seguintes comandos:
+
+```bash
+docker build -t angular-docker .
+docker run -p 4200:4200 angular-docker
+```
+
+A aplicação ficará disponível em: http://localhost:4200
