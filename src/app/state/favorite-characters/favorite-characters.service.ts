@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { FavoriteCharactersStore } from './favorite-characters.store';
 import { FavoriteCharactersQuery } from './favorite-characters.query';
-import { Character } from '../../shared/models/characters.interface';
+import { Character } from '@Models/characters.interface';
 
 @Injectable({ providedIn: 'root' })
 export class FavoriteCharactersService {

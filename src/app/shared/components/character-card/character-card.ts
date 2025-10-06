@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TruncatePipe } from '../../pipes/truncate.pipe';
+import { TruncatePipe } from '@Pipes/truncate.pipe';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({

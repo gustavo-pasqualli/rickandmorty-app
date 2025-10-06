@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EntityStore, EntityState, StoreConfig } from '@datorama/akita';
-import { Character } from '../../shared/models/characters.interface';
+import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
+import { Character } from '@Models/characters.interface';
 
 export interface FavoriteCharactersState extends EntityState<Character, number> {}
 

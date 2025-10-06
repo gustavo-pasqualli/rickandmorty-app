@@ -1,10 +1,10 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Header } from './shared/components/header/header';
-import { NavigationTabs } from './shared/components/navigation-tabs/navigation-tabs';
-import { FavoriteCharactersQuery } from './state/favorite-characters';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterOutlet } from '@angular/router';
+import { Header } from '@Components/header/header';
+import { NavigationTabs } from '@Components/navigation-tabs/navigation-tabs';
+import { TranslateService } from '@ngx-translate/core';
+import { FavoriteCharactersQuery } from '@State/favorite-characters';
 
 @Component({
   selector: 'app-root',

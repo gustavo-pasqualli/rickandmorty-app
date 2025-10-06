@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QueryEntity } from '@datorama/akita';
 import { FavoriteCharactersStore, FavoriteCharactersState } from './favorite-characters.store';
-import { Character } from '../../shared/models/characters.interface';
+import { Character } from '@Models/characters.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

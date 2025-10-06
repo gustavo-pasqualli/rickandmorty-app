@@ -16,11 +16,13 @@
     "module": "preserve",
     "baseUrl": "src",
     "paths": {
+      "@Features/*": ["app/features/*"],
       "@Components/*": ["app/shared/components/*"],
       "@Directives/*": ["app/shared/directives/*"],
       "@Models/*": ["app/shared/models/*"],
       "@Pipes/*": ["app/shared/pipes/*"],
-      "@State/*": ["app/state/*"]
+      "@State/*": ["app/state/*"],
+      "@Environments/*": ["environments/*"],
     }
   },
   "angularCompilerOptions": {
