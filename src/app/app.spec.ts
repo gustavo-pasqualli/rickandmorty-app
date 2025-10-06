@@ -1,25 +1,37 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { App } from './app';
+
+// dummies pra rotas usadas no template
+import { Component } from '@angular/core';
+import { MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateParser, TranslateService, TranslateStore } from '@ngx-translate/core';
+@Component({standalone: true, template: ''}) class DummyCharacters {}
+@Component({standalone: true, template: ''}) class DummyFavorites {}
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideZonelessChangeDetection()]
+      providers: [
+        provideZonelessChangeDetection(),
+        provideRouter([
+          { path: 'characters', component: DummyCharacters },
+          { path: 'favorites', component: DummyFavorites },
+          { path: '', redirectTo: 'characters', pathMatch: 'full' },
+        ]),
+         { provide: TranslateLoader },
+        TranslateService,
+        TranslateCompiler,
+        TranslateParser,
+        MissingTranslationHandler,
+        TranslateStore
+      ],
     }).compileComponents();
   });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, rickandmorty-app');
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
