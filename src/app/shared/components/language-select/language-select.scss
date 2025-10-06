@@ -1,0 +1,13 @@
+@use 'colors';
+
+.language-select {
+  border: 1px solid colors.$color-core-border;
+  border-radius: 12px;
+  padding: 2px 18px;
+  color: colors.$color-neutral-content-onSource;
+  background-color: colors.$color-neutral-surface;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}

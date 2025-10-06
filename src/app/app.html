@@ -3,7 +3,11 @@
     <img src="images/logo.png" alt="Logo Rick and Morty" logo width="114" height="64">
   </a>
 
-  <app-navigation-tabs [tabs]="tabs()"></app-navigation-tabs>
+  <div class="header-options">
+    <app-language-select></app-language-select>
+    <app-navigation-tabs [tabs]="tabs()"></app-navigation-tabs>
+  </div>
+
 </app-header>
 
 <section class="container">

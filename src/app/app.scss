@@ -2,6 +2,12 @@
   display: block;
 }
 
+.header-options {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
 .container {
   position: relative;
   margin-top: 64px;

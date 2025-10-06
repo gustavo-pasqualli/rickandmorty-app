@@ -1,0 +1,5 @@
+<select class="language-select" (change)="onChange($event)">
+  @for(language of languages; track $index) {
+  <option [value]="language" [selected]="language === current()">{{ language }}</option>
+  }
+</select>
