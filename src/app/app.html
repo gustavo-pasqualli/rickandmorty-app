@@ -1,19 +1,15 @@
 <app-header>
-  <a routerLink="./character">
-    <img src="images/logo.png" alt="Logo Rick and Morty" logo width="114" height="64">
-  </a>
-
   <div class="header-options">
+    <a routerLink="./character">
+      <img src="images/logo.png" alt="Logo Rick and Morty" logo width="114" height="64">
+    </a>
     <app-language-select></app-language-select>
-    <app-navigation-tabs [tabs]="tabs()"></app-navigation-tabs>
   </div>
 
+  <app-navigation-tabs [tabs]="tabs()"></app-navigation-tabs>
 </app-header>
 
 <section class="container">
-  <main class="container__content">
-    <router-outlet></router-outlet>
-  </main>
-
-  <app-back-to-top class="back-to-top"></app-back-to-top>
+  <router-outlet></router-outlet>
+  <app-back-to-top></app-back-to-top>
 </section>

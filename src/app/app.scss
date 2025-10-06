@@ -10,23 +10,16 @@
 
 .container {
   position: relative;
-  margin-top: 64px;
+  max-width: 720px;
+  margin: 64px auto 0;
+  padding: 48px 0;
 
   @media(max-width: 760px) {
+    max-width: 472px;
     margin-top: 0;
   }
 
-  &__content {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 0;
-
-    @media(max-width: 760px) {
-      max-width: 472px;
-    }
-
-    @media(max-width: 576px) {
-      max-width: 224px;
-    }
+  @media(max-width: 576px) {
+    max-width: 224px;
   }
 }
