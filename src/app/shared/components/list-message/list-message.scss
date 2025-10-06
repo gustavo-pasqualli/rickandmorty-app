@@ -23,4 +23,10 @@
     font-size: 18px;
     color: colors.$color-core-content-low;
   }
+
+  @media(max-width: 760px) {
+    padding: 10px;
+    height: 450px;
+    text-align: center;
+  }
 }
