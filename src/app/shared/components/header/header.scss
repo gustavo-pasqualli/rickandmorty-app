@@ -5,7 +5,6 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
   z-index: 1000;
   display: block;
   background-color: colors.$color-core-foreground;
@@ -18,4 +17,10 @@ header {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px;
+
+  @media(max-width: 576px) {
+    flex-direction: column;
+    row-gap: 24px;
+    margin-bottom: 24px;
+  }
 }

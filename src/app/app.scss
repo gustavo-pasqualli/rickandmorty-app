@@ -3,6 +3,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
+
 }
 
 .container {
@@ -10,9 +11,21 @@
   scrollbar-gutter: stable;
   margin-top: 64px;
 
+  @media(max-width: 576px) {
+    margin-top: 150px;
+  }
+
   &__content {
-    width: 720px;
+    max-width: 720px;
     margin: 0 auto;
     padding: 48px 0;
+
+    @media(max-width: 760px) {
+      max-width: 472px;
+    }
+
+    @media(max-width: 576px) {
+      max-width: 224px;
+    }
   }
 }
