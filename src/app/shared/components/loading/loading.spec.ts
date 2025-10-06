@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListSkeleton } from './list-skeleton';
+import { Loading } from './loading';
 
-describe('ListSkeleton', () => {
-  let component: ListSkeleton;
-  let fixture: ComponentFixture<ListSkeleton>;
+describe('Loading', () => {
+  let component: Loading;
+  let fixture: ComponentFixture<Loading>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListSkeleton]
+      imports: [Loading]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListSkeleton);
+    fixture = TestBed.createComponent(Loading);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

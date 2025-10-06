@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CharacterCard } from '@Components/character-card/character-card';
 import { ListMessage } from '@Components/list-message/list-message';
-import { ListSkeleton } from '@Components/list-skeleton/list-skeleton';
+import { Loading } from '@Components/loading/loading';
 import { PageTitle } from '@Components/page-title/page-title';
 import { RouterButton } from '@Components/router-button/router-button';
 import { SearchInput } from '@Components/search-input/search-input';
@@ -20,7 +20,7 @@ import { combineLatest, debounceTime, distinctUntilChanged, map, startWith } fro
     ReactiveFormsModule,
     AsyncPipe,
     CharacterCard,
-    ListSkeleton,
+    Loading,
     ListMessage,
     RouterButton
   ],
