@@ -6,6 +6,10 @@
   position: relative;
   margin-top: 64px;
 
+  @media(max-width: 760px) {
+    margin-top: 0;
+  }
+
   &__content {
     max-width: 720px;
     margin: 0 auto;
