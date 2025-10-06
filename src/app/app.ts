@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Header } from '@Components/header/header';
 import { NavigationTabs } from '@Components/navigation-tabs/navigation-tabs';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,7 +11,8 @@ import { FavoriteCharactersQuery } from '@State/favorite-characters';
   imports: [
     RouterOutlet,
     Header,
-    NavigationTabs
+    NavigationTabs,
+    RouterLink
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
